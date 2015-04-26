@@ -1,0 +1,1 @@
+./mongodump -d game -c user -o - >userBackup.bson

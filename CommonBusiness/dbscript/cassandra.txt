@@ -1,0 +1,60 @@
+
+CREATE KEYSPACE game
+with placement_strategy = 'org.apache.cassandra.locator.SimpleStrategy'
+and strategy_options = {replication_factor:1};
+
+SHOW KEYSPACES;
+
+USE game;
+
+CREATE COLUMN FAMILY user_message
+WITH comparator = UTF8Type
+AND key_validation_class=UTF8Type
+AND default_validation_class = UTF8Type;
+
+
+DROP COLUMN FAMILY user_message;
+DROP KEYSPACE game;
+
+ASSUME user_message KEYS AS ascii;
+ASSUME user_message COMPARATOR AS ascii;
+ASSUME user_message VALIDATOR AS ascii;
+
+
+CREATE KEYSPACE barrage
+with placement_strategy = 'org.apache.cassandra.locator.SimpleStrategy'
+and strategy_options = {replication_factor:1};
+
+SHOW KEYSPACES;
+
+USE barrage;
+
+CREATE COLUMN FAMILY user_feed_timeline
+WITH comparator = UTF8Type
+AND key_validation_class=UTF8Type
+AND default_validation_class = UTF8Type;
+
+
+CREATE COLUMN FAMILY user_chat
+WITH comparator = UTF8Type
+AND key_validation_class=UTF8Type
+AND default_validation_class = UTF8Type;
+
+ASSUME user_chat KEYS AS ascii;
+ASSUME user_chat COMPARATOR AS ascii;
+ASSUME user_chat VALIDATOR AS ascii;
+
+
+DROP COLUMN FAMILY user_feed_timeline;
+DROP COLUMN FAMILY user_chat;
+DROP KEYSPACE barrage;
+
+ASSUME user_feed_timeline KEYS AS ascii;
+ASSUME user_feed_timeline COMPARATOR AS ascii;
+ASSUME user_feed_timeline VALIDATOR AS ascii;
+
+// get method
+get user_feed_timeline[utf8(54859990d4c62b2d77aef649)];
+
+// list method
+list user_feed_timeline;

@@ -1,0 +1,101 @@
+
+1.Dice和Zhajinhua服务器
+  
+    公网IP地址：58.215.164.153
+    内网IP地址：192.168.14.159
+    域名：无
+    昵称：Game Server I
+    重要服务或脚本：
+        /root/dice/run_dice_traffic_server.sh: dice服务器，加-h参数可以查看所有用法
+        /root/zhajinhua/run_zhajinhua_traffic_server.sh: 诈金花服务器，加-h参数可以查看所有用法
+
+        /root/song_crawler.sh: 用于抓取全部歌曲库的爬虫程序，加-h参数可以查看所有用法
+
+        !!!!!!!!!!
+        /root/run_nrpe.sh: nrpe是用于与nagios监控主机通信的服务进程，请在系统物理重启后运行此脚本
+        !!!!!!!!!!
+    
+2.Draw在线服务器
+
+    公网IP地址：58.215.172.169
+    内网IP地址：192.168.12.72
+    域名：无
+    昵称：Game Server II
+    重要服务或脚本:
+        /root/draw/cn_run_draw_online_server.sh：中文在线猜画服务器，加-h参数可以查看所有用法
+        /root/draw/en_run_draw_online_server.sh：英文在线猜画服务器，加-h参数可以查看所有用法
+        
+        /root/draw_test: 此目录用于测试，其下所有脚本皆可加-h参数查看所有用法
+        /root/simple_home/run_simple_home.sh: simple_home服务器，加-h参数可以查看所有用法
+
+        /root/song_crawler.sh: 用于抓取全部歌曲库的爬虫程序，加-h参数可以查看所有用法
+
+        !!!!!!!!!!
+        /root/run_nrpe.sh: nrpe是用于与nagios监控主机通信的服务进程，请在系统物理重启后运行此脚本
+        !!!!!!!!!!
+
+
+3.Mongodb服务器,GameAPI服务器, Nagios监控主机
+
+    公网IP地址：58.215.160.100
+    内网IP地址：192.168.13.89
+    域名：无
+    昵称：Mongodb Server, Game API Server, Nagios Server
+    重要脚本:
+        !!!!!!!!!!!!!!!!!!!
+        /root/after_rebooting_plz_run_me.sh: 当系统物理重启后，请务必运行此脚本！！！
+        !!!!!!!!!!!!!!!!!!!
+
+        /root/game/run_game_api_server.sh: Game API服务器，加-h参数可以查看所有用法
+
+        /root/alipay_server/run_alipay_charge_server.sh: alipay支付服务器，加-h参数可以查看所有用法
+
+        /root/run_mongod.sh: mongodb服务器，加-h参数可以查看所有用法
+     
+        /root/song_crawler.sh: 用于抓取全部歌曲库的爬虫程序，加-h参数可以查看所有用法
+
+        /root/run_cassandra.sh: cassandra服务器，加-h参数可以查看所有用法
+
+    重要服务：
+        /etc/init.d/lighttpd start 或 stop 或 restart: 
+                 用于启动｜关闭｜重启lighttpd服务器，其日志在目录/var/log/lighttpd/下
+        
+        /etc/init.d/httpd start 或 stop 或 restart: 
+                 用于启动｜关闭｜重启httpd服务器, 目前nagios web界面和twiki需要依赖这个服务,监听8911端口
+
+        /root/elasticsearch/run_elasticsearch.sh: 
+                 用于启动｜关闭｜重启elasticsearch服务器，加-h参数可以查看所有用法
+       
+        /etc/init.d/nagios start 或 stop 或 restart:
+                 用于启动｜关闭｜重启nagios监控服务器
+
+
+4.TrafficAPI服务器
+
+    公网IP地址：58.215.184.18
+    内网IP地址：192.168.14.106
+    域名：place100.com
+    昵称：Game Traffic API Server
+    重要脚本：
+        /root/game/run_traffic_api_server.sh：Game Traffic API服务器，加-h参数可以查看所有用法
+         
+        /root/weibo_pusher/send_daily_weibo.sh: 每日作品微博发送脚本，一般情况下不用手动运行，加-h参数可以查看所有用法
+
+        /root/weibo_pusher/send_contest_weibo.sh: 发比赛相关微博的脚本，加-h参数可以查看所有用法
+
+        /root/NodeJSWeb/admin/run_admin.sh: 管理后台服务器，加-h参数可以查看所有用法
+       
+        /root/song_crawler.sh: 用于抓取全部歌曲库的爬虫程序，加-h参数可以查看所有用法
+
+        !!!!!!!!!!
+        /root/run_nrpe.sh: nrpe是用于与nagios监控主机通信的服务进程，请在系统物理重启后运行此脚本
+        !!!!!!!!!!
+
+
+    重要服务
+        /etc/init.d/lighttpd start 或 stop 或 restart: 
+                 用于启动｜关闭｜重启lighttpd服务器，其日志在目录/var/log/lighttpd/下
+        
+        /root/run_redis.sh start 或 stop 或 restart:        
+                 用于启动｜关闭｜重启redis服务器
+

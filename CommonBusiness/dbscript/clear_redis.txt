@@ -1,0 +1,37 @@
+
+
+// 清除pool数据
+del opus_for_guess_draw_happy
+del opus_for_guess_draw_contest
+del opus_for_guess_draw_genius
+
+// 清除总榜
+del all_time_top_user_guess_draw_genius
+del all_time_top_user_guess_draw_happy
+
+
+// 清除日榜
+del hot_top_user_guess_draw_genius_day_20130917
+
+// 清除榜单详细数据
+db.user_guess_achievement_draw.remove();
+
+
+// 用户当前天才模式数据
+db.user_guess_draw_genius.find().pretty()
+
+// 用户当前欢乐模式数据
+db.user_guess_draw_happy.find().pretty()
+
+// 用户成就表
+db.user_guess_achievement_draw.find().pretty()
+
+
+// 生成contest pool
+http://place100.com:8699/api/i?&m=generateGuessContestOpusPool&tp=1&ct=10000&gid=Draw
+
+// 生成happy pool数据
+http://place100.com:8699/api/i?&m=generateGuessContestOpusPool&tp=3&ct=500&gid=Draw
+
+// 生成genius pool
+http://place100.com:8100/api/i?&m=generateGuessContestOpusPool&tp=2&ct=10000&gid=Draw

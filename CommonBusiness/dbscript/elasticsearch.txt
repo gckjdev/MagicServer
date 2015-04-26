@@ -1,0 +1,8 @@
+
+
+curl -XGET 'http://localhost:9200/barrage/user/<userId>?pretty'
+
+example:
+
+curl -XGET 'http://localhost:9200/barrage/user/5490396874f8383d999eb282?pretty'
+

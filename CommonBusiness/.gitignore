@@ -1,0 +1,12 @@
+/target/
+/.classpath
+/.project
+/logs/
+/bin
+.settings/
+deploy_common_game.sh
+*.iws
+*.iml
+*.ipr
+.DS_Store
+.idea/
