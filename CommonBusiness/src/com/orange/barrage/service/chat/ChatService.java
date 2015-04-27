@@ -51,8 +51,13 @@ public class ChatService {
             // increase agent counter
             int counter = UserChatCounterManager.getInstance().incAgentChatCounter(agentId);
 
+            // write agent user history
+            AgentUserHistoryManager.writeAgentUserHistory(agent.getAgentId(), pbChat.getFromUserId());
+
             // TODO notify agent
     //        OnlineAgentManager.getInstance().notifyAgentNewMessage(agent, counter);
+
+
 
             // for test, auto reply
             testAgentReply(chat, agent);

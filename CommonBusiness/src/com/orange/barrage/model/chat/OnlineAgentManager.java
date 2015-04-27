@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by pipi on 15/4/18.
+ * 在线客服管理类
  */
 public class OnlineAgentManager extends CommonModelManager<Agent> {
     private static OnlineAgentManager ourInstance = new OnlineAgentManager();
