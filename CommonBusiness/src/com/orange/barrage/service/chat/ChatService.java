@@ -109,8 +109,9 @@ public class ChatService {
         chatBuilder.setType(UserProtos.PBChatType.TEXT_CHAT_VALUE);
         chatBuilder.setSource(UserProtos.PBChatSource.FROM_AGENT_VALUE);
 
-        sendChat(chatBuilder.build(), MessageProtos.PBSendChatResponse.newBuilder());
+//        sendChat(chatBuilder.build(), MessageProtos.PBSendChatResponse.newBuilder());
 
+        ChatHttpClientAPI.getInstance().sendChat(chatBuilder.build(), agent.getAgentId());
     }
 
     public int getUserChatList(String userId,
