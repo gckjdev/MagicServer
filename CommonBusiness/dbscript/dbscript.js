@@ -120,6 +120,18 @@ db.contest.insert({
             });
 
 
+db.contest.update({"_id" : ObjectId("988888888888888820150425")},{$addToSet:{reporters:"54b5daf5e4b0b269e609b07a"}});
+db.contest.update({"_id" : ObjectId("988888888888888820150425")},{$addToSet:{reporters:"53c74494e4b01ff00c9da386"}});
+db.contest.update({"_id" : ObjectId("988888888888888820150425")},{$addToSet:{reporters:"53cd3100e4b0ff9473e311c7"}});
+db.contest.update({"_id" : ObjectId("988888888888888820150425")},{$addToSet:{reporters:"545f1ee3e4b0b269e602be6c"}});
+db.contest.update({"_id" : ObjectId("988888888888888820150425")},{$addToSet:{reporters:"5035c6422609ffed65eaf96d"}});
+db.contest.update({"_id" : ObjectId("988888888888888820150425")},{$addToSet:{reporters:"542aa870e4b01eb7e75ae5ab"}});
+db.contest.update({"_id" : ObjectId("988888888888888820150425")},{$addToSet:{reporters:"5266221ee4b08666ffea31bb"}});
+
+db.contest.update({"_id" : ObjectId("988888888888888820150425")},{$addToSet:{reporters:"5483e91ee4b0b269e60582f1"}});
+
+
+
 
 
 db.contest.update({"_id" : ObjectId("988888888888888820150214")},{$addToSet:{judges:"50f4ad58e4b05bb0f07e9a08"}});
@@ -128,7 +140,7 @@ db.contest.update({"_id" : ObjectId("988888888888888820150214")},{$addToSet:{jud
 db.contest.update({"_id" : ObjectId("988888888888888820150214")},{$addToSet:{judges:"522363fae4b030c9cfe85f6a"}});
 
 
-db.contest.update({"_id" : ObjectId("988888888888888820150214")},{$addToSet:{reporters:"517e7461e4b0a2a6ee6e8d59"}});
+db.contest.update({"_id" : ObjectId("988888888888888820150214")},{$addToSet:{reporters:"54b5daf5e4b0b269e609b07a"}});
 db.contest.update({"_id" : ObjectId("988888888888888820150214")},{$addToSet:{reporters:"51021f70e4b0a04f9ebc8ed5"}});
 db.contest.update({"_id" : ObjectId("988888888888888820150214")},{$addToSet:{reporters:"51ef4440e4b0705e61162244"}});
 db.contest.update({"_id" : ObjectId("988888888888888820150214")},{$addToSet:{reporters:"53f9e20de4b013e9b6b8fc1a"}});
