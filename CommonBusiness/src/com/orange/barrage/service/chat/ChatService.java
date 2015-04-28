@@ -61,7 +61,7 @@ public class ChatService {
 
 
             // for test, auto reply
-//            testAgentReply(chat, agent);
+            testAgentReply(chat, agent);
 
         }
         else{
@@ -93,6 +93,8 @@ public class ChatService {
 
     }
 
+    public int autoSendType = 0;
+
     private void testAgentReply(Chat chat, Agent agent) {
 
 
@@ -111,8 +113,21 @@ public class ChatService {
         chatBuilder.setToUserId(sourceChat.getFromUserId());
 
         chatBuilder.setChatId("");
-        chatBuilder.setText("自动回复 "+sourceChat.getText());
-        chatBuilder.setType(UserProtos.PBChatType.TEXT_CHAT_VALUE);
+
+        int type = ( autoSendType++ ) % 3;
+        switch (type) {
+            case UserProtos.PBChatType.PICTURE_CHAT_VALUE:
+                chatBuilder.setImage("http://e.hiphotos.baidu.com/image/pic/item/e1fe9925bc315c60103d2bee8fb1cb1349547702.jpg");
+                break;
+            case UserProtos.PBChatType.TEXT_CHAT_VALUE:
+                chatBuilder.setText("自动回复 " + sourceChat.getText());
+                break;
+            case UserProtos.PBChatType.VOICE_CHAT_VALUE:
+                chatBuilder.setVoice("http://gckjdev.qiniudn.com/chat/voice/audio/20150427/8c11f6aee71b4587ab4a585dda0d1bfd.wav");
+                chatBuilder.setDuration(2);
+                break;
+        }
+        chatBuilder.setType(type);
         chatBuilder.setSource(UserProtos.PBChatSource.FROM_AGENT_VALUE);
 
 //        sendChat(chatBuilder.build(), MessageProtos.PBSendChatResponse.newBuilder());

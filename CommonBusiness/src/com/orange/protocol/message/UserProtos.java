@@ -21674,6 +21674,23 @@ public final class UserProtos {
         getVoiceBytes();
 
     /**
+     * <code>optional int32 duration = 14;</code>
+     *
+     * <pre>
+     * 录音时长，秒
+     * </pre>
+     */
+    boolean hasDuration();
+    /**
+     * <code>optional int32 duration = 14;</code>
+     *
+     * <pre>
+     * 录音时长，秒
+     * </pre>
+     */
+    int getDuration();
+
+    /**
      * <code>optional int32 createDate = 20;</code>
      *
      * <pre>
@@ -21885,23 +21902,28 @@ public final class UserProtos {
               voice_ = bs;
               break;
             }
-            case 160: {
+            case 112: {
               bitField0_ |= 0x00001000;
+              duration_ = input.readInt32();
+              break;
+            }
+            case 160: {
+              bitField0_ |= 0x00002000;
               createDate_ = input.readInt32();
               break;
             }
             case 168: {
-              bitField0_ |= 0x00002000;
+              bitField0_ |= 0x00004000;
               status_ = input.readInt32();
               break;
             }
             case 176: {
-              bitField0_ |= 0x00004000;
+              bitField0_ |= 0x00008000;
               type_ = input.readInt32();
               break;
             }
             case 184: {
-              bitField0_ |= 0x00008000;
+              bitField0_ |= 0x00010000;
               source_ = input.readInt32();
               break;
             }
@@ -22499,6 +22521,29 @@ public final class UserProtos {
       }
     }
 
+    public static final int DURATION_FIELD_NUMBER = 14;
+    private int duration_;
+    /**
+     * <code>optional int32 duration = 14;</code>
+     *
+     * <pre>
+     * 录音时长，秒
+     * </pre>
+     */
+    public boolean hasDuration() {
+      return ((bitField0_ & 0x00001000) == 0x00001000);
+    }
+    /**
+     * <code>optional int32 duration = 14;</code>
+     *
+     * <pre>
+     * 录音时长，秒
+     * </pre>
+     */
+    public int getDuration() {
+      return duration_;
+    }
+
     public static final int CREATEDATE_FIELD_NUMBER = 20;
     private int createDate_;
     /**
@@ -22509,7 +22554,7 @@ public final class UserProtos {
      * </pre>
      */
     public boolean hasCreateDate() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
+      return ((bitField0_ & 0x00002000) == 0x00002000);
     }
     /**
      * <code>optional int32 createDate = 20;</code>
@@ -22532,7 +22577,7 @@ public final class UserProtos {
      * </pre>
      */
     public boolean hasStatus() {
-      return ((bitField0_ & 0x00002000) == 0x00002000);
+      return ((bitField0_ & 0x00004000) == 0x00004000);
     }
     /**
      * <code>optional int32 status = 21;</code>
@@ -22555,7 +22600,7 @@ public final class UserProtos {
      * </pre>
      */
     public boolean hasType() {
-      return ((bitField0_ & 0x00004000) == 0x00004000);
+      return ((bitField0_ & 0x00008000) == 0x00008000);
     }
     /**
      * <code>optional int32 type = 22;</code>
@@ -22578,7 +22623,7 @@ public final class UserProtos {
      * </pre>
      */
     public boolean hasSource() {
-      return ((bitField0_ & 0x00008000) == 0x00008000);
+      return ((bitField0_ & 0x00010000) == 0x00010000);
     }
     /**
      * <code>optional int32 source = 23;</code>
@@ -22604,6 +22649,7 @@ public final class UserProtos {
       image_ = "";
       thumb_ = "";
       voice_ = "";
+      duration_ = 0;
       createDate_ = 0;
       status_ = 0;
       type_ = 0;
@@ -22681,15 +22727,18 @@ public final class UserProtos {
         output.writeBytes(13, getVoiceBytes());
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        output.writeInt32(20, createDate_);
+        output.writeInt32(14, duration_);
       }
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
-        output.writeInt32(21, status_);
+        output.writeInt32(20, createDate_);
       }
       if (((bitField0_ & 0x00004000) == 0x00004000)) {
-        output.writeInt32(22, type_);
+        output.writeInt32(21, status_);
       }
       if (((bitField0_ & 0x00008000) == 0x00008000)) {
+        output.writeInt32(22, type_);
+      }
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
         output.writeInt32(23, source_);
       }
       getUnknownFields().writeTo(output);
@@ -22751,17 +22800,21 @@ public final class UserProtos {
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(20, createDate_);
+          .computeInt32Size(14, duration_);
       }
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(21, status_);
+          .computeInt32Size(20, createDate_);
       }
       if (((bitField0_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(22, type_);
+          .computeInt32Size(21, status_);
       }
       if (((bitField0_ & 0x00008000) == 0x00008000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(22, type_);
+      }
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(23, source_);
       }
@@ -22921,14 +22974,16 @@ public final class UserProtos {
         bitField0_ = (bitField0_ & ~0x00000400);
         voice_ = "";
         bitField0_ = (bitField0_ & ~0x00000800);
-        createDate_ = 0;
+        duration_ = 0;
         bitField0_ = (bitField0_ & ~0x00001000);
-        status_ = 0;
+        createDate_ = 0;
         bitField0_ = (bitField0_ & ~0x00002000);
-        type_ = 0;
+        status_ = 0;
         bitField0_ = (bitField0_ & ~0x00004000);
-        source_ = 0;
+        type_ = 0;
         bitField0_ = (bitField0_ & ~0x00008000);
+        source_ = 0;
+        bitField0_ = (bitField0_ & ~0x00010000);
         return this;
       }
 
@@ -23020,17 +23075,21 @@ public final class UserProtos {
         if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
           to_bitField0_ |= 0x00001000;
         }
-        result.createDate_ = createDate_;
+        result.duration_ = duration_;
         if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
           to_bitField0_ |= 0x00002000;
         }
-        result.status_ = status_;
+        result.createDate_ = createDate_;
         if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
           to_bitField0_ |= 0x00004000;
         }
-        result.type_ = type_;
+        result.status_ = status_;
         if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
           to_bitField0_ |= 0x00008000;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
+          to_bitField0_ |= 0x00010000;
         }
         result.source_ = source_;
         result.bitField0_ = to_bitField0_;
@@ -23100,6 +23159,9 @@ public final class UserProtos {
           bitField0_ |= 0x00000800;
           voice_ = other.voice_;
           onChanged();
+        }
+        if (other.hasDuration()) {
+          setDuration(other.getDuration());
         }
         if (other.hasCreateDate()) {
           setCreateDate(other.getCreateDate());
@@ -24466,6 +24528,54 @@ public final class UserProtos {
         return this;
       }
 
+      private int duration_ ;
+      /**
+       * <code>optional int32 duration = 14;</code>
+       *
+       * <pre>
+       * 录音时长，秒
+       * </pre>
+       */
+      public boolean hasDuration() {
+        return ((bitField0_ & 0x00001000) == 0x00001000);
+      }
+      /**
+       * <code>optional int32 duration = 14;</code>
+       *
+       * <pre>
+       * 录音时长，秒
+       * </pre>
+       */
+      public int getDuration() {
+        return duration_;
+      }
+      /**
+       * <code>optional int32 duration = 14;</code>
+       *
+       * <pre>
+       * 录音时长，秒
+       * </pre>
+       */
+      public Builder setDuration(int value) {
+        bitField0_ |= 0x00001000;
+        duration_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 duration = 14;</code>
+       *
+       * <pre>
+       * 录音时长，秒
+       * </pre>
+       */
+      public Builder clearDuration() {
+        bitField0_ = (bitField0_ & ~0x00001000);
+        duration_ = 0;
+        onChanged();
+        return this;
+      }
+
       private int createDate_ ;
       /**
        * <code>optional int32 createDate = 20;</code>
@@ -24475,7 +24585,7 @@ public final class UserProtos {
        * </pre>
        */
       public boolean hasCreateDate() {
-        return ((bitField0_ & 0x00001000) == 0x00001000);
+        return ((bitField0_ & 0x00002000) == 0x00002000);
       }
       /**
        * <code>optional int32 createDate = 20;</code>
@@ -24495,7 +24605,7 @@ public final class UserProtos {
        * </pre>
        */
       public Builder setCreateDate(int value) {
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00002000;
         createDate_ = value;
         onChanged();
         return this;
@@ -24508,7 +24618,7 @@ public final class UserProtos {
        * </pre>
        */
       public Builder clearCreateDate() {
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00002000);
         createDate_ = 0;
         onChanged();
         return this;
@@ -24523,7 +24633,7 @@ public final class UserProtos {
        * </pre>
        */
       public boolean hasStatus() {
-        return ((bitField0_ & 0x00002000) == 0x00002000);
+        return ((bitField0_ & 0x00004000) == 0x00004000);
       }
       /**
        * <code>optional int32 status = 21;</code>
@@ -24543,7 +24653,7 @@ public final class UserProtos {
        * </pre>
        */
       public Builder setStatus(int value) {
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00004000;
         status_ = value;
         onChanged();
         return this;
@@ -24556,7 +24666,7 @@ public final class UserProtos {
        * </pre>
        */
       public Builder clearStatus() {
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00004000);
         status_ = 0;
         onChanged();
         return this;
@@ -24571,7 +24681,7 @@ public final class UserProtos {
        * </pre>
        */
       public boolean hasType() {
-        return ((bitField0_ & 0x00004000) == 0x00004000);
+        return ((bitField0_ & 0x00008000) == 0x00008000);
       }
       /**
        * <code>optional int32 type = 22;</code>
@@ -24591,7 +24701,7 @@ public final class UserProtos {
        * </pre>
        */
       public Builder setType(int value) {
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00008000;
         type_ = value;
         onChanged();
         return this;
@@ -24604,7 +24714,7 @@ public final class UserProtos {
        * </pre>
        */
       public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00008000);
         type_ = 0;
         onChanged();
         return this;
@@ -24619,7 +24729,7 @@ public final class UserProtos {
        * </pre>
        */
       public boolean hasSource() {
-        return ((bitField0_ & 0x00008000) == 0x00008000);
+        return ((bitField0_ & 0x00010000) == 0x00010000);
       }
       /**
        * <code>optional int32 source = 23;</code>
@@ -24639,7 +24749,7 @@ public final class UserProtos {
        * </pre>
        */
       public Builder setSource(int value) {
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00010000;
         source_ = value;
         onChanged();
         return this;
@@ -24652,7 +24762,7 @@ public final class UserProtos {
        * </pre>
        */
       public Builder clearSource() {
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00010000);
         source_ = 0;
         onChanged();
         return this;
@@ -24778,45 +24888,46 @@ public final class UserProtos {
       "urence\030\001 \001(\005\022\021\n\trejection\030\002 \001(\005\022\031\n\021lastO" +
       "ccurenceDate\030\003 \001(\005\022\031\n\021lastRejectionDate\030" +
       "\004 \001(\005\"7\n\017PBUserGroupList\022$\n\006groups\030\001 \003(\013",
-      "2\024.barrage.PBUserGroup\"\314\002\n\006PBChat\022\016\n\006cha" +
+      "2\024.barrage.PBUserGroup\"\336\002\n\006PBChat\022\016\n\006cha" +
       "tId\030\001 \002(\t\022\021\n\tsessionId\030\002 \001(\t\022!\n\010fromUser" +
       "\030\003 \001(\0132\017.barrage.PBUser\022\022\n\nfromUserId\030\004 " +
       "\001(\t\022%\n\nfromDevice\030\005 \001(\0132\021.barrage.PBDevi" +
       "ce\022\037\n\006toUser\030\006 \001(\0132\017.barrage.PBUser\022\020\n\010t" +
       "oUserId\030\007 \001(\t\022\021\n\tfromAgent\030\010 \001(\010\022\014\n\004text" +
       "\030\n \001(\t\022\r\n\005image\030\013 \001(\t\022\r\n\005thumb\030\014 \001(\t\022\r\n\005" +
-      "voice\030\r \001(\t\022\022\n\ncreateDate\030\024 \001(\005\022\016\n\006statu" +
-      "s\030\025 \001(\005\022\014\n\004type\030\026 \001(\005\022\016\n\006source\030\027 \001(\005*@\n" +
-      "\023FriendAddSourceType\022\021\n\rADD_BY_SEARCH\020\001\022",
-      "\026\n\022ADD_BY_SCAN_QRCODE\020\002*N\n\023FriendAddConf" +
-      "igType\022\022\n\016REQUIRE_ACCEPT\020\000\022\016\n\nACCEPT_ALL" +
-      "\020\001\022\023\n\017DISALLOW_ADD_ME\020\007*f\n\026FriendRequest" +
-      "Direction\022\030\n\024REQ_DIRECTION_SENDER\020\000\022\032\n\026R" +
-      "EQ_DIRECTION_RECEIVER\020\001\022\026\n\022REQ_DIRECTION" +
-      "_NONE\020\002*c\n\023FriendAddStatusType\022\023\n\017REQ_WA" +
-      "IT_ACCEPT\020\000\022\020\n\014REQ_ACCEPTED\020\001\022\020\n\014REQ_REJ" +
-      "ECTED\020\002\022\023\n\017REQ_STATUS_NONE\020\007*r\n\013PBLoginT" +
-      "ype\022\020\n\014LOGIN_XIAOJI\020d\022\017\n\013LOGIN_EMAIL\020e\022\020" +
-      "\n\014LOGIN_MOBILE\020f\022\014\n\010LOGIN_QQ\020\006\022\016\n\nLOGIN_",
-      "SINA\020\001\022\020\n\014LOGIN_WEIXIN\020\027*i\n\016PBRegisterTy" +
-      "pe\022\016\n\nREG_XIAOJI\020d\022\r\n\tREG_EMAIL\020e\022\016\n\nREG" +
-      "_MOBILE\020f\022\n\n\006REG_QQ\020\006\022\014\n\010REG_SINA\020\001\022\016\n\nR" +
-      "EG_WEIXIN\020\027*E\n\nPBTagColor\022\n\n\006SYSTEM\020\000\022\n\n" +
-      "\006CUSTOM\020\001\022\n\n\006MYSELF\020\002\022\007\n\003HOT\020\003\022\n\n\006RECENT" +
-      "\020\004*p\n\022PBInviteCodeStatus\022\025\n\021CODE_STATUS_" +
-      "READY\020\000\022\024\n\020CODE_STATUS_SENT\020\001\022\024\n\020CODE_ST" +
-      "ATUS_USED\020\002\022\027\n\023CODE_STATUS_INVALID\020\003*\240\001\n" +
-      "\014PBChatSource\022\017\n\013FROM_WECHAT\020\001\022\020\n\014FROM_A" +
-      "PP_IOS\020\002\022\024\n\020FROM_APP_ANDROID\020\003\022\014\n\010FROM_W",
-      "EB\020\005\022\023\n\017FROM_MOBILE_WEB\020\006\022\016\n\nFROM_AGENT\020" +
-      "\007\022\023\n\017FROM_AGENT_AUTO\020\010\022\017\n\013FROM_SYSTEM\020\t*" +
-      "=\n\nPBChatType\022\r\n\tTEXT_CHAT\020\000\022\020\n\014PICTURE_" +
-      "CHAT\020\001\022\016\n\nVOICE_CHAT\020\002*s\n\014PBChatStatus\022\023" +
-      "\n\017MESSAGE_SENDING\020\000\022\020\n\014MESSAGE_SENT\020\001\022\023\n" +
-      "\017MESSAGE_FAILURE\020\002\022\023\n\017MESSAGE_DELETED\020\003\022" +
-      "\022\n\016MESSAGE_CANCEL\020\004*4\n\rPBAgentStatus\022\021\n\r" +
-      "AGENT_OFFLINE\020\000\022\020\n\014AGENT_ONLINE\020\001B)\n\033com" +
-      ".orange.protocol.messageB\nUserProtos"
+      "voice\030\r \001(\t\022\020\n\010duration\030\016 \001(\005\022\022\n\ncreateD" +
+      "ate\030\024 \001(\005\022\016\n\006status\030\025 \001(\005\022\014\n\004type\030\026 \001(\005\022" +
+      "\016\n\006source\030\027 \001(\005*@\n\023FriendAddSourceType\022\021",
+      "\n\rADD_BY_SEARCH\020\001\022\026\n\022ADD_BY_SCAN_QRCODE\020" +
+      "\002*N\n\023FriendAddConfigType\022\022\n\016REQUIRE_ACCE" +
+      "PT\020\000\022\016\n\nACCEPT_ALL\020\001\022\023\n\017DISALLOW_ADD_ME\020" +
+      "\007*f\n\026FriendRequestDirection\022\030\n\024REQ_DIREC" +
+      "TION_SENDER\020\000\022\032\n\026REQ_DIRECTION_RECEIVER\020" +
+      "\001\022\026\n\022REQ_DIRECTION_NONE\020\002*c\n\023FriendAddSt" +
+      "atusType\022\023\n\017REQ_WAIT_ACCEPT\020\000\022\020\n\014REQ_ACC" +
+      "EPTED\020\001\022\020\n\014REQ_REJECTED\020\002\022\023\n\017REQ_STATUS_" +
+      "NONE\020\007*r\n\013PBLoginType\022\020\n\014LOGIN_XIAOJI\020d\022" +
+      "\017\n\013LOGIN_EMAIL\020e\022\020\n\014LOGIN_MOBILE\020f\022\014\n\010LO",
+      "GIN_QQ\020\006\022\016\n\nLOGIN_SINA\020\001\022\020\n\014LOGIN_WEIXIN" +
+      "\020\027*i\n\016PBRegisterType\022\016\n\nREG_XIAOJI\020d\022\r\n\t" +
+      "REG_EMAIL\020e\022\016\n\nREG_MOBILE\020f\022\n\n\006REG_QQ\020\006\022" +
+      "\014\n\010REG_SINA\020\001\022\016\n\nREG_WEIXIN\020\027*E\n\nPBTagCo" +
+      "lor\022\n\n\006SYSTEM\020\000\022\n\n\006CUSTOM\020\001\022\n\n\006MYSELF\020\002\022" +
+      "\007\n\003HOT\020\003\022\n\n\006RECENT\020\004*p\n\022PBInviteCodeStat" +
+      "us\022\025\n\021CODE_STATUS_READY\020\000\022\024\n\020CODE_STATUS" +
+      "_SENT\020\001\022\024\n\020CODE_STATUS_USED\020\002\022\027\n\023CODE_ST" +
+      "ATUS_INVALID\020\003*\240\001\n\014PBChatSource\022\017\n\013FROM_" +
+      "WECHAT\020\001\022\020\n\014FROM_APP_IOS\020\002\022\024\n\020FROM_APP_A",
+      "NDROID\020\003\022\014\n\010FROM_WEB\020\005\022\023\n\017FROM_MOBILE_WE" +
+      "B\020\006\022\016\n\nFROM_AGENT\020\007\022\023\n\017FROM_AGENT_AUTO\020\010" +
+      "\022\017\n\013FROM_SYSTEM\020\t*=\n\nPBChatType\022\r\n\tTEXT_" +
+      "CHAT\020\000\022\020\n\014PICTURE_CHAT\020\001\022\016\n\nVOICE_CHAT\020\002" +
+      "*s\n\014PBChatStatus\022\023\n\017MESSAGE_SENDING\020\000\022\020\n" +
+      "\014MESSAGE_SENT\020\001\022\023\n\017MESSAGE_FAILURE\020\002\022\023\n\017" +
+      "MESSAGE_DELETED\020\003\022\022\n\016MESSAGE_CANCEL\020\004*4\n" +
+      "\rPBAgentStatus\022\021\n\rAGENT_OFFLINE\020\000\022\020\n\014AGE" +
+      "NT_ONLINE\020\001B)\n\033com.orange.protocol.messa" +
+      "geB\nUserProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -24890,7 +25001,7 @@ public final class UserProtos {
     internal_static_barrage_PBChat_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_barrage_PBChat_descriptor,
-        new java.lang.String[] { "ChatId", "SessionId", "FromUser", "FromUserId", "FromDevice", "ToUser", "ToUserId", "FromAgent", "Text", "Image", "Thumb", "Voice", "CreateDate", "Status", "Type", "Source", });
+        new java.lang.String[] { "ChatId", "SessionId", "FromUser", "FromUserId", "FromDevice", "ToUser", "ToUserId", "FromAgent", "Text", "Image", "Thumb", "Voice", "Duration", "CreateDate", "Status", "Type", "Source", });
     com.orange.protocol.message.CommonProtos.getDescriptor();
   }
 
