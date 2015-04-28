@@ -1,5 +1,6 @@
 package com.orange.barrage.service.kafka;
 
+import com.orange.protocol.message.UserProtos;
 import kafka.producer.Partitioner;
 
 /**
@@ -9,7 +10,13 @@ public class KafkaChatPartitioner implements Partitioner {
 
     @Override
     public int partition(Object o, int numPartitions) {
-        return o.hashCode() % numPartitions;
+        if (o instanceof UserProtos.PBChat){
+            UserProtos.PBChat pbChat = (UserProtos.PBChat)o;
+            return pbChat.getFromUserId().hashCode() % numPartitions;
+        }
+        else {
+            return o.hashCode() % numPartitions;
+        }
     }
 
 }
