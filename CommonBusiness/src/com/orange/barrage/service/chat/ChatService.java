@@ -1,6 +1,7 @@
 package com.orange.barrage.service.chat;
 
 import com.orange.barrage.model.chat.*;
+import com.orange.barrage.service.kafka.KafkaChatProducer;
 import com.orange.barrage.service.push.PushService;
 import com.orange.common.utils.DateUtil;
 import com.orange.common.utils.StringUtil;
@@ -56,11 +57,11 @@ public class ChatService {
 
             // TODO notify agent
     //        OnlineAgentManager.getInstance().notifyAgentNewMessage(agent, counter);
-
+            KafkaChatProducer.getInstance().sendChat(chat.toProtoBufModel(), agent);
 
 
             // for test, auto reply
-            testAgentReply(chat, agent);
+//            testAgentReply(chat, agent);
 
         }
         else{

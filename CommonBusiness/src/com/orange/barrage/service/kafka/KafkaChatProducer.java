@@ -32,7 +32,7 @@ public class KafkaChatProducer {
         props.put("metadata.broker.list", "localhost:9092");
 
         //配置value的序列化类
-        props.put("serializer.class", "kafka.serializer.KafkaChatEncoder");
+        props.put("serializer.class", "com.orange.barrage.service.kafka.KafkaChatEncoder");
 
         //配置key的序列化类
         props.put("key.serializer.class", "kafka.serializer.StringEncoder");
@@ -58,6 +58,7 @@ public class KafkaChatProducer {
     public final static String KEY_CHAT_TO_AGENT = "ChatToAgent";
 
     public String createChatTopic(String agentId) {
+//        return "test";
         return String.format("%s-%s", KEY_CHAT_TO_AGENT, agentId);
     }
 }

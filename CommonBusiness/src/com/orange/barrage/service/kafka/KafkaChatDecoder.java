@@ -13,6 +13,10 @@ public class KafkaChatDecoder  implements Decoder<UserProtos.PBChat> {
 
     protected static Logger log = Logger.getLogger(KafkaChatDecoder.class.getName());
 
+    public KafkaChatDecoder(VerifiableProperties verifiableProperties) {
+        /* This constructor must be present for successful compile. */
+    }
+
     @Override
     public UserProtos.PBChat fromBytes(byte[] bytes) {
         try {

@@ -1,11 +1,16 @@
 package com.orange.barrage.service.kafka;
 
+import org.apache.log4j.Logger;
+
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by pipi on 15/4/28.
  */
 public class KafkaChatConsumerManager {
+
+    protected static Logger log = Logger.getLogger(KafkaChatConsumerManager.class.getName());
+
     private static KafkaChatConsumerManager ourInstance = new KafkaChatConsumerManager();
 
     public static KafkaChatConsumerManager getInstance() {
@@ -14,6 +19,8 @@ public class KafkaChatConsumerManager {
 
     private KafkaChatConsumerManager() {
     }
+
+    volatile int groupIndex = 0;
 
     final ConcurrentHashMap<String, KafkaChatConsumer> consumerConnectionMap = new ConcurrentHashMap<String, KafkaChatConsumer>();
     final Object lock = new Object();
@@ -25,7 +32,7 @@ public class KafkaChatConsumerManager {
             }
 
             // create new consumer and start it
-            int index = consumerConnectionMap.size();
+            int index = groupIndex++;
             KafkaChatConsumer consumer = new KafkaChatConsumer(agentId, index, callback);
             consumerConnectionMap.put(agentId, consumer);
             consumer.start();
