@@ -55,9 +55,8 @@ public class ChatService {
             // write agent user history
             AgentUserHistoryManager.writeAgentUserHistory(agent.getAgentId(), pbChat.getFromUserId());
 
-            // TODO notify agent
-    //        OnlineAgentManager.getInstance().notifyAgentNewMessage(agent, counter);
-            KafkaChatProducer.getInstance().sendChat(chat.toProtoBufModel(), agent);
+            // notify agent
+//            KafkaChatProducer.getInstance().sendChat(chat.toProtoBufModel(), agent);
 
 
             // for test, auto reply
